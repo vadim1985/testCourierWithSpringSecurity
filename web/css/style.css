@@ -1,0 +1,33 @@
+body
+{
+    background-color: greenyellow;
+    color: black;
+    position: center;
+}
+
+.loginForm
+{
+    width: 50%;
+    height: 200px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.pageCourier
+{
+    width: 30%;
+    height: 200px;
+    margin: 50px auto;
+    text-align: center;
+}
+.buttonCourier
+{
+    width: 200px;
+    height: 70px;
+}
+
+.btnChooseRole
+{
+    width: 200px;
+    height: 100px;
+}

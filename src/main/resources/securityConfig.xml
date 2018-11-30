@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+<security:http auto-config="true" use-expressions="true">
+    <security:form-login
+            login-page="/index"
+            default-target-url="/main"/>
+<security:intercept-url pattern="/main" access="hasRole('ROLE_COURIER') or hasRole('ROLE_OPERATOR') or hasRole('ROLE_ADMIN')"/>
+    <security:intercept-url pattern="/courier" access="hasRole('COURIER') or hasRole('ROLE_ADMIN')"/>
+    <security:intercept-url pattern="/operator" access="hasRole('OPERATOR') or hasRole('ROLE_ADMIN')"/>
+    <security:csrf disabled="true"/>
+</security:http>
+
+    <security:authentication-manager >
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="operator1"  password="1"  authorities="ROLE_OPERATOR" />
+                <security:user name="courier1" password="1" authorities="ROLE_COURIER" />
+                <security:user name="admin" password="1" authorities="ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+</beans>
